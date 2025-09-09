@@ -67,7 +67,7 @@
 
 
 ##################### 88: MERGED SORTED ARRAY #####################
-def merge(nums1: list[int], nums2: list[int], m: int, n: int) -> None:
+# def merge(nums1: list[int], nums2: list[int], m: int, n: int) -> None:
     # if m == 0:
     #     nums1[:] = nums2
     #     return
@@ -90,26 +90,340 @@ def merge(nums1: list[int], nums2: list[int], m: int, n: int) -> None:
     #         last = m + x
     # print(nums1)
     # return
-    if m == 0:
-        nums1[:] = nums2
-        return
-    if n == 0:
-        return
-    nums2Place = n - 1
-    nums1Place = m - 1
-    i = m + n - 1
-    while nums2Place >= 0:
-        if nums1Place < 0 or nums2[nums2Place] > nums1[nums1Place]:
-            nums1[i] = nums2[nums2Place]
-            nums2Place -= 1
-        else:
-            nums1[i] = nums1[nums1Place]
-            nums1Place -= 1
-        i -= 1
-    return
+#     if m == 0:
+#         nums1[:] = nums2
+#         return
+#     if n == 0:
+#         return
+#     nums2Place = n - 1
+#     nums1Place = m - 1
+#     i = m + n - 1
+#     while nums2Place >= 0:
+#         if nums1Place < 0 or nums2[nums2Place] > nums1[nums1Place]:
+#             nums1[i] = nums2[nums2Place]
+#             nums2Place -= 1
+#         else:
+#             nums1[i] = nums1[nums1Place]
+#             nums1Place -= 1
+#         i -= 1
+#     return
 
-nums1 = [2, 0]
-nums2 = [1]
-m = 1
-n = 1
-merge(nums1, nums2, m, n)
+# nums1 = [2, 0]
+# nums2 = [1]
+# m = 1
+# n = 1
+# merge(nums1, nums2, m, n)
+
+
+######################## 1: TWO SUM ########################
+# def twoSum(nums: list[int], target: int) -> list[int]:
+#     newDict = {}
+#     for x in range(len(nums)):
+#         newTarget = target - nums[x]
+#         if newTarget in newDict:
+#             result = [newDict[newTarget], x]
+#             return result
+#         print(newDict.values())
+#         newDict.update({nums[x]: x})
+#     return []
+
+
+# print("hello world")
+# nums = [1, 1, 1, 1, 1, 5, 8, 1, 1, 1,1, 1,1]
+# result = twoSum(nums, 13)
+# print(result)
+
+######################## 706: DESIGN HASHMAP ########################
+# class MyHashMap:
+
+#     def __init__(self):
+#         self.size = 10
+#         self.buckets = [[] for _ in range(self.size)]
+    
+#     def put(self, key: int, value: int) -> None:
+#         index = key % self.size
+#         bucket = self.buckets[index]
+#         for i, (k,v) in enumerate(bucket):
+#             if k == key:
+#                 bucket[i] = (key, value)
+#                 return
+#         bucket.append((key, value))
+    
+#     def get(self, key: int) -> int:
+#         index = key % self.size
+#         for k, v in self.buckets[index]:
+#             if k == key:
+#                 return v
+#         return -1
+
+#     def remove(self, key: int) -> None:
+#         index = key % self.size
+#         bucket = self.buckets[index]
+#         for i, (k, _) in enumerate(bucket):
+#             if k == key:
+#                 bucket.pop(i)
+#                 return
+
+# hm = MyHashMap()
+# hm.put(1, 1)
+# hm.put(2, 2)
+# hm
+
+######################## 2283: CHECK IF NUMBER HAS EQUAL DIGIT COUNT AND DIGIT VALUE ########################
+# def digitCount(num: str) -> bool:
+#     newDict = {}
+#     newDict2 = {}
+#     for x in range(len(num)):
+#         newDict[x] = int(num[x])
+#         if num[x] in newDict2:
+#             newDict2[num[x]] = newDict2[num[x]] + 1
+#         else:
+#             newDict2[num[x]] = 1
+#     for x in range(len(newDict)):
+#         actual = newDict2.get(str(x), 0)
+#         required = newDict[x]
+#         if actual != required:
+#             return False
+#     return True
+
+# num = '030'
+# print(digitCount(num))
+
+######################## 2980: CHECK IF BITWISE OR HAS TRAILING ZEROES ########################
+# def hasTrailingZeroes(nums: list[int]) -> bool:
+#     evenCounter = 0
+#     for x in range(len(nums)):
+#         if(nums[x] % 2 == 0):
+#             evenCounter = evenCounter + 1
+#         if(evenCounter == 2):
+#             return True
+#     return False
+
+# nums = [2,4,6,8]
+# print(hasTrailingZeroes(nums))
+
+######################## 3591: CHECK IF ANY ELEMENT HAS PRIME FREQUENCY ########################
+# def is_prime(n: int) -> bool:
+#     print(n)
+#     if n <= 1:
+#         return False
+#     for i in range(2, n):
+#         if n % i == 0:
+#             return False
+#     return True
+
+# def checkPrimeFrequency(self, nums: list[int]) -> bool:
+#     newDict = {}
+#     allOnes = True
+#     for x in range(len(nums)):
+#         if nums[x] in newDict:
+#             newDict[nums[x]] += 1
+#             allOnes = False
+#         else:
+#             newDict[nums[x]] = 1
+#     if allOnes == True:
+#         return False
+#     for x in newDict:
+#         if newDict[x] == 1 or is_prime(newDict[x]) == False:
+#             continue
+#         else:
+#             return True
+#     return False
+
+# nums = [2,2,0,6,12,2,10,7,0,2]
+# print(checkPrimeFrequency(nums))
+
+######################## 3178: FIND THE CHILD WHO HAS THE BALL AFTER K SECONDS ########################
+# def numberOfChild(n: int, k: int) -> int:
+    # currentChild = 0
+    # goingForward = True
+    # i = 1
+    # for i in range(k):
+    #     if (currentChild == n - 1):
+    #         goingForward = False
+    #     if(currentChild == 0):
+    #         goingForward = True
+    #     if(goingForward == True):
+    #         currentChild += 1
+    #     if(goingForward == False):
+    #         currentChild -= 1
+    #     print(currentChild)
+    # return currentChild
+#     n -= 1
+#     rounds = k / n
+#     remainder = k % n
+#     if rounds%2 == 0:
+#         return remainder
+#     else:
+#         return n - remainder
+
+# print(numberOfChild(3, 5))\
+
+######################## 20: VALID PARENTHESIS ########################
+# def isValid(s: str) -> bool:
+#     stack = []
+#     if s[0] == ')' or s[0] == ']' or s[0] == '}':
+#         return False
+#     for x in range(len(s)):
+#         if s[x] == '(' or s[x] == '[' or s[x] == '{':
+#             stack.append(s[x])
+#         else:
+#             if s[x] == ')':
+#                 if stack == []:
+#                     return False
+#                 popped = stack.pop()
+#                 if popped != '(':
+#                     return False
+#             if s[x] == ']':
+#                 if stack == []:
+#                     return False
+#                 popped = stack.pop()
+#                 if popped != '[':
+#                     return False
+#             if s[x] == '}':
+#                 if stack == []:
+#                     return False
+#                 popped = stack.pop()
+#                 if popped != '{':
+#                     return False
+#     if stack == []:
+#         return True
+#     else:
+#         return False
+    
+# s = '([)]'
+# print(isValid(s))
+
+######################## 26: REMOVE DUPLICATES FROM SORTED ARRAY ########################
+# def removeDuplicates(nums: list[int]) -> int:
+# SOLUTION WITH HASHMAP
+#     result = []
+#     for x in range(len(nums)):
+#         if nums[x] in result:
+#             continue
+#         else:
+#             result.append(nums[x])
+#     nums[:] = result
+#     return len(nums)
+#     # return nums
+# SOLUTION WITHOUT HASHMAP
+#     curr = 1
+#     k = 1
+#     for x in range(len(nums)-1):
+#         if nums[x+1] == nums[x]:
+#             continue
+#         else:
+#             nums[curr] = nums[x+1]
+#             curr += 1
+#             k += 1
+#     print(nums)
+#     return k
+
+
+# nums = [0,0,1,1,1,2,2,3,3,4]
+# print(removeDuplicates(nums))
+
+######################## 35: SEARCH INSERT POSITION ########################
+# def searchInsert(nums: list[int], target: int) -> int:
+#     middle = int(len(nums) / 2)
+#     length = len(nums) - 1
+#     print(f"middle: {middle}")
+#     if target < nums[0]:
+#         return 0
+#     if target > nums[length]:
+#         return length + 1
+#     if target == nums[middle]:
+#         return middle
+#     if target < nums[middle] and target >= nums[middle]:
+#         return middle + 1
+#     if target >= nums[middle]:
+#         offset = searchInsert(nums[middle+1:], target)
+#         return middle + offset + 1
+#     if target < nums[middle]:
+#         return searchInsert(nums[:middle], target)
+#     return middle
+
+# nums = [1,3,5,6]
+# print(searchInsert(nums, 4))
+
+
+######################## 70: CLIMBING STAIRS ########################
+# def climbStairs(n: int) -> int:
+# RECURSION 
+    # if n == 1:
+    #     return 1
+    # if n == 2:
+    #     return 2
+    # else:
+    #     return climbStairs(n-1) + climbStairs(n-2)
+# TABULATION
+    # if n == 1:
+    #     return 1
+    # if n == 2:
+    #     return 2
+    # else:
+    #     table = {}
+    #     table[1] = 1
+    #     table[2] = 2
+    #     for x in range(3,n+1): 
+    #         table[x] = table[x-1] + table[x-2]
+    #     return table[n]
+        
+# n = 44
+# print(climbStairs(n))
+
+
+######################## 66: PLUS ONE ########################
+# def plusOne(digits: list[int]) -> list[int]:
+#     for x in range(len(digits)-1, -1, -1):
+#         digits[x] += 1
+#         if digits[x] != 10:
+#             return digits
+#         else:
+#             digits[x] = 0
+#             if digits[0] == 0:
+#                 digits = [1] + digits
+#                 return digits
+#     return digits
+
+
+
+# digits = [9,9,9,9,9,9]
+# print(plusOne(digits))
+
+
+######################## 2807: INSERT GREATEST COMMON DIVISORS IN LINKED LIST ########################
+# from typing import Optional
+# import math
+# class ListNode:
+#     def __init__(self, val = 0, next = None):
+#         self.val = val
+#         self.next = next
+# class Solution:
+#     def insertionGCD(head: Optional[ListNode]) -> Optional[ListNode]:
+#         if head is None:
+#             return None
+#         if head.next is None:
+#             return head
+#         p1 = head
+#         p2 = head.next
+#         while p2 is not None:
+#             temp = p1.next
+#             gcd = ListNode(math.gcd(p1.val, p2.val), None)
+#             gcd.next = temp
+#             p1.next = gcd
+#             p1 = temp
+#             p2 = p2.next
+#         curr = head
+#         while curr is not None:
+#             print(curr.val)
+#             curr = curr.next
+#         return head
+
+# head = ListNode(18, None)
+# head.next = ListNode(6, None)
+# second = head.next
+# second.next = ListNode(10, None)
+# third = second.next
+# third.next = ListNode(3, None)
+# Solution.insertionGCD(head)
