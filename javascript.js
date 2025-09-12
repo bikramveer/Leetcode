@@ -28,21 +28,75 @@
 // console.log(twoSum2(nums, target))
 
 
+///////////////////////// 27: REMOVE ELEMENT /////////////////////////
+// var removeElement = function(nums, val) {
+//     let swapped = 0;
+//     for(let i = 0; i < nums.length; i++) {
+//         if(nums[i] !== val) {
+//             nums[swapped] = nums[i];
+//             swapped++;
+//         };
+//     };
+//     return swapped;
+// };
+
+// nums = [0,1,2,2,3,0,4,2];
+// console.log(removeElement(nums, 2));
+
+
+///////////////////////// 28: FIND THE INDEX OF THE FIRST OCCURENCE IN A STRING /////////////////////////
+// var strStr = function(haystack, needle) {
+//     let range = haystack.length - needle.length + 1
+//     if(needle.length > haystack.length) {
+//         return -1;
+//     };
+//     for(let i = 0; i <= range; i++) {
+//         if (haystack[i] == needle[0]) {
+//             let temp = i;
+//             let curr = i;
+//             let y = 0;
+//             let equal = true;
+//             while (y < needle.length) {
+//                 if(curr == haystack.length) {
+//                     return -1;
+//                 } else if(haystack[curr] != needle[y]) {
+//                     equal = false;
+//                     break;
+//                 } else {
+//                     y++;
+//                     curr++;
+//                 };
+//             };
+//             if(equal === true) {
+//                 return temp;
+//             };
+//         };
+//     };
+//     return -1;
+// };
+
+// let haystack = 'dasbutsad'
+// let needle = 'sad'
+// console.log(strStr2(haystack, needle));
+
+
 ///////////////////////// 35: SEARCH INSERTION POINT /////////////////////////
-var searchInsert = function(nums, target) {
-    let start = 0;
-    let end = nums.length - 1;
-    while(start <= end) {
-        let mid = Math.floor((start + end) / 2);
-        if(nums[mid] === target) {
-            return mid;
-        } else if(target > nums[mid]) {
-            start = mid + 1;
-        } else {
-            end = mid - 1;
-        };
-    };
-    return start;
+// var searchInsert = function(nums, target) {
+// 2 pointer split solution
+    // let start = 0;
+    // let end = nums.length - 1;
+    // while(start <= end) {
+    //     let mid = Math.floor((start + end) / 2);
+    //     if(nums[mid] === target) {
+    //         return mid;
+    //     } else if(target > nums[mid]) {
+    //         start = mid + 1;
+    //     } else {
+    //         end = mid - 1;
+    //     };
+    // };
+    // return start;
+// 2 pointer iterative solution
     // let first = 0;
     // let second = 1;
     // if(nums[first] === target || nums[first] >= target) {
@@ -60,10 +114,10 @@ var searchInsert = function(nums, target) {
     //     second++;
     // }
     // return second;
-}
+// }
 
-nums = [1, 3, 5, 6];
-console.log(searchInsert(nums, 7));
+// nums = [1, 3, 5, 6];
+// console.log(searchInsert(nums, 7));
 
 
 ///////////////////////// 58: LENGTH OF LAST WORD /////////////////////////
@@ -142,3 +196,70 @@ console.log(searchInsert(nums, 7));
 // }
 
 // climbingStairs2(7)
+
+
+///////////////////////// 88: MERGED SORTED ARRAY /////////////////////////
+var merge = function(nums1, nums2, m, n) {
+    if(m === 0) {
+        nums1 = nums2;
+        return;
+    };
+    if(n === 0) {
+        return;
+    };
+    last = m - 1;
+    for(let i = 0; i < n; i++) {
+        if(nums2[i] >= nums1[last]) {
+            console.log(nums2[i] + ' >= ' + nums1[last]);
+            nums1[last + 1] = nums2[i]
+            last++;
+        } else {
+            while(nums2[i] < nums1[last] && last >= 0) {
+                console.log(nums2[i] + ' < ' + nums1[last]);
+                var temp = nums1[last];
+                nums1[last] = nums2[i];
+                nums1[last + 1] = temp;
+                console.log('nums1 = '+ nums1);
+                last--;
+            };
+            last = m + i;
+        };
+    };
+    console.log('nums1 = ' + nums1);
+    return;
+};
+
+var merge2 = function(nums1, nums2, m, n) {
+    if(m === 0) {
+        nums1 = nums2;
+        return;
+    };
+    if(n === 0) {
+        return;
+    };
+    let nums2Place = n - 1;
+    let nums1Place = m - 1;
+    let i = m + n - 1;
+    while(nums2Place >= 0) {
+        if(nums1Place < 0 || nums2[nums2Place] > nums1[nums1Place]) {
+            console.log('nums2Place = ' + nums2Place);
+            console.log('nums1Place = ' + nums1Place); 
+            nums1[i] = nums2[nums2Place];
+            nums2Place--;
+        } else {
+            console.log('nums2Place = ' + nums2Place);
+            nums1[i] = nums1[nums1Place];
+            nums1Place--;
+        };
+        i--;
+    };
+    console.log('nums1 = ' + nums1);
+    return;
+}
+
+nums1 = [1,2,3,0,0,0];
+nums2 = [2,5,6];
+m = 3;
+n = 3;
+merge2(nums1, nums2, m, n);
+
