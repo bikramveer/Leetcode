@@ -427,3 +427,23 @@
 # third = second.next
 # third.next = ListNode(3, None)
 # Solution.insertionGCD(head)
+
+# 001100011
+# count all substrings with equal 0s and 1s
+# answer above is 6
+# 01,0011,1100,10,01,0011
+
+def countSubstrings(s: str) -> int:
+    runs = []
+    curr = 1
+    for i in range(1, len(s)):
+        if s[i] == s[i-1]:
+            curr += 1
+        else:
+            runs.append(curr)
+            curr = 1
+    runs.append(curr)
+    return sum(min(runs[i], runs[i+1]) for i in range(len(runs) - 1))
+
+s = '001100011'
+print(countSubstrings(s))
