@@ -28,6 +28,84 @@
 // console.log(twoSum2(nums, target))
 
 
+///////////////////////// 20: VALID PARENTHESIS /////////////////////////
+// var isValid = function(s) {
+//     const stack = [];
+//     let popped;
+//     if (s[0] === ')' || s[0] === ']' || s[0] === '}') {
+//         console.log('Started with open parenthesis.');
+//         return false;
+//     };
+//     for (let i = 0; i < s.length; i++) {
+//         if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
+//             stack.push(s[i]);
+//             console.log(stack);
+//         } else {
+//             console.log(stack.length)
+//             switch (s[i]) {
+//                 case ')':
+//                     if (stack.length == 0) {
+//                         console.log('Empty Stack.')
+//                         return false;
+//                     };
+//                     popped = stack.pop();
+//                     if (popped !== '(') {
+//                         return false;
+//                     };
+//                     break;
+//                 case ']':
+//                     if (stack.length === 0) {
+//                         console.log('Empty Stack.')
+//                         return false;
+//                     };
+//                     popped = stack.pop();
+//                     if (popped !== '[') {
+//                         return false;
+//                     };
+//                     break;
+//                 case '}':
+//                     if (stack.length === 0) {
+//                         console.log('Empty Stack.')
+//                         return false;
+//                     };
+//                     popped = stack.pop();
+//                     if (popped !== '{') {
+//                         return false;
+//                     };
+//                     break;
+//                 default:
+//                     return false;
+//             };
+//         };
+//     };
+//     return (stack.length === 0) ? true : false;
+// };
+
+// let s = '()';
+// console.log(isValid(s));
+
+
+///////////////////////// 26: REMOVE DUPLICARTES FROM SORTED ARRAY /////////////////////////
+// var removeDuplicates = function(nums) {
+//     let curr = 1;
+//     let k = 1;
+//     for (let i = 0; i < nums.length - 1; i++) {
+//         if (nums[i + 1] === nums[i]) {
+//             continue;
+//         } else {
+//             nums[curr] = nums[i + 1];
+//             curr += 1;
+//             k += 1
+//         };
+//     };
+//     console.log(nums);
+//     return k;
+// };
+
+// let nums = [0,0,,1,1,1,2,3,3,4];
+// console.log(removeDuplicates(nums));
+
+
 ///////////////////////// 27: REMOVE ELEMENT /////////////////////////
 // var removeElement = function(nums, val) {
 //     let swapped = 0;
@@ -329,25 +407,85 @@
 
 
 ///////////////////////// 2283: CHECK IF NUMBER HAS EQUAL DIGIT COUNT AND DIGIT VALUE /////////////////////////
-var digitCount = function(s) {
-    let map1 = new Map;
-    let map2 = new Map;
-    for (let i = 0; i < s.length; i++) {
-        map1.set(i, s[+i]); 
-        (map2.get(s[i])) ? map2.set(s[+i], map2.get(s[i]) + 1) : map2.set(s[+i], 1);
-    };
-    for (let i = 0; i < map1.size; i++) {
-        let actual = 0;
-        if(map2.get(String(i)) !== undefined) {
-            actual = map2.get(String(i));
-        };
-        let required = map1.get(i);
-        if (actual != required) {
-            return false;
-        };
-    };
-    return true;
-};
+// var digitCount = function(s) {
+//     let map1 = new Map;
+//     let map2 = new Map;
+//     for (let i = 0; i < s.length; i++) {
+//         map1.set(i, s[+i]); 
+//         (map2.get(s[i])) ? map2.set(s[+i], map2.get(s[i]) + 1) : map2.set(s[+i], 1);
+//     };
+//     for (let i = 0; i < map1.size; i++) {
+//         let actual = 0;
+//         if(map2.get(String(i)) !== undefined) {
+//             actual = map2.get(String(i));
+//         };
+//         let required = map1.get(i);
+//         if (actual != required) {
+//             return false;
+//         };
+//     };
+//     return true;
+// };
 
-num = '1210'
-console.log(digitCount(num));
+// num = '1210'
+// console.log(digitCount(num));
+
+
+///////////////////////// 2807: INSERT GREATEST COMMON DIVISORS IN LINKED LIST /////////////////////////
+// class ListNode {
+//     constructor(val, next) {
+//         this.val = (val === undefined ? 0 : val);
+//         this.next = (next === undefined ? null : next);
+//     }
+// }
+// var greatestCommonDivisor = function(x, y) {
+//     let result = Math.min(x, y);
+
+//     if (Math.max(x,y) % result === 0) {
+//         return result;
+//     } else {
+//         result = Math.floor(result / 2);
+//         while(result > 1) {
+//             if(x%result === 0 && y%result === 0) {
+//                 return result;
+//             } else {
+//                 result -= 1;
+//             };
+//         };
+//     }
+//     return result;
+// };
+
+// var insertGreatestCommonDivisors = function(head) {
+//     if(head === undefined) {
+//         return null;
+//     };
+//     if(head.next === null) {
+//         return head;
+//     };
+//     let p1 = head;
+//     let p2 = head.next;
+//     while (p2 !== null) {
+//         let temp = p1.next;
+//         let gcd = greatestCommonDivisor(p1.val, p2.val);
+//         let gcdNode = new ListNode(gcd);
+//         gcdNode.next = temp;
+//         p1.next = gcdNode;
+//         p1 = temp;
+//         p2 = p2.next;
+//     };
+//     curr = head;
+//     while (curr !== null) {
+//         console.log(curr.val);
+//         curr = curr.next;
+//     };
+//     return head;
+// };
+
+// let head = new ListNode(18);
+// head.next = new ListNode(6);
+// let second = head.next;
+// second.next = new ListNode(10);
+// let third = second.next;
+// third.next = new ListNode(3);
+// console.log(insertGreatestCommonDivisors(head));
