@@ -170,24 +170,29 @@
 # hm
 
 ######################## 2283: CHECK IF NUMBER HAS EQUAL DIGIT COUNT AND DIGIT VALUE ########################
-# def digitCount(num: str) -> bool:
-#     newDict = {}
-#     newDict2 = {}
-#     for x in range(len(num)):
-#         newDict[x] = int(num[x])
-#         if num[x] in newDict2:
-#             newDict2[num[x]] = newDict2[num[x]] + 1
-#         else:
-#             newDict2[num[x]] = 1
-#     for x in range(len(newDict)):
-#         actual = newDict2.get(str(x), 0)
-#         required = newDict[x]
-#         if actual != required:
-#             return False
-#     return True
+def digitCount(num: str) -> bool:
+    newDict = {}
+    newDict2 = {}
+    for x in range(len(num)):
+        newDict[x] = int(num[x])
+        if num[x] in newDict2:
+            newDict2[num[x]] = newDict2[num[x]] + 1
+        else:
+            newDict2[num[x]] = 1
+    print(f'newDict = {newDict}')
+    print(f'newDict2 = {newDict2}')
+    for x in range(len(newDict)):
+        print(f'x = {x}')
+        actual = newDict2.get(str(x), 0)
+        print(f'actual = {actual}')
+        required = newDict[x]
+        print(f'required = {required}')
+        if actual != required:
+            return False
+    return True
 
-# num = '030'
-# print(digitCount(num))
+num = '1210'
+print(digitCount(num))
 
 ######################## 2980: CHECK IF BITWISE OR HAS TRAILING ZEROES ########################
 # def hasTrailingZeroes(nums: list[int]) -> bool:
@@ -433,7 +438,12 @@
 # answer above is 6
 # 01,0011,1100,10,01,0011
 
-def countSubstrings(s: str) -> int:
+
+######################## FDM INTERVIEW QUESTION ########################
+# very similar to leetcode question 696
+# this is considered a leetcode easy question
+# but fair to say it's tricky unless you know the trick
+def countBinarySubstrings(s: str) -> int:
     runs = []
     curr = 1
     for i in range(1, len(s)):
@@ -445,5 +455,5 @@ def countSubstrings(s: str) -> int:
     runs.append(curr)
     return sum(min(runs[i], runs[i+1]) for i in range(len(runs) - 1))
 
-s = '001100011'
-print(countSubstrings(s))
+s = "001100011"
+print(countBinarySubstrings(s))

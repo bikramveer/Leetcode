@@ -199,67 +199,155 @@
 
 
 ///////////////////////// 88: MERGED SORTED ARRAY /////////////////////////
-var merge = function(nums1, nums2, m, n) {
-    if(m === 0) {
-        nums1 = nums2;
-        return;
+// var merge = function(nums1, nums2, m, n) {
+//     if(m === 0) {
+//         nums1 = nums2;
+//         return;
+//     };
+//     if(n === 0) {
+//         return;
+//     };
+//     last = m - 1;
+//     for(let i = 0; i < n; i++) {
+//         if(nums2[i] >= nums1[last]) {
+//             console.log(nums2[i] + ' >= ' + nums1[last]);
+//             nums1[last + 1] = nums2[i]
+//             last++;
+//         } else {
+//             while(nums2[i] < nums1[last] && last >= 0) {
+//                 console.log(nums2[i] + ' < ' + nums1[last]);
+//                 var temp = nums1[last];
+//                 nums1[last] = nums2[i];
+//                 nums1[last + 1] = temp;
+//                 console.log('nums1 = '+ nums1);
+//                 last--;
+//             };
+//             last = m + i;
+//         };
+//     };
+//     console.log('nums1 = ' + nums1);
+//     return;
+// };
+
+// var merge2 = function(nums1, nums2, m, n) {
+//     if(m === 0) {
+//         nums1 = nums2;
+//         return;
+//     };
+//     if(n === 0) {
+//         return;
+//     };
+//     let nums2Place = n - 1;
+//     let nums1Place = m - 1;
+//     let i = m + n - 1;
+//     while(nums2Place >= 0) {
+//         if(nums1Place < 0 || nums2[nums2Place] > nums1[nums1Place]) {
+//             console.log('nums2Place = ' + nums2Place);
+//             console.log('nums1Place = ' + nums1Place); 
+//             nums1[i] = nums2[nums2Place];
+//             nums2Place--;
+//         } else {
+//             console.log('nums2Place = ' + nums2Place);
+//             nums1[i] = nums1[nums1Place];
+//             nums1Place--;
+//         };
+//         i--;
+//     };
+//     console.log('nums1 = ' + nums1);
+//     return;
+// }
+
+// nums1 = [1,2,3,0,0,0];
+// nums2 = [2,5,6];
+// m = 3;
+// n = 3;
+// merge2(nums1, nums2, m, n);
+
+
+///////////////////////// 696: COUNT BINARY SUBSTRINGS /////////////////////////
+///////////////////////// FDM INTERVIEW QUESTION /////////////////////////
+// var countBinarySubstrings = function(s) {
+//     const runs = []
+//     let curr = 1
+//     for(let i = 1; i<s.length; i++) {
+//         if(s[i] === s[i-1]) {
+//             curr += 1;
+//         } else {
+//             runs.push(curr);
+//             curr = 1;
+//         };
+//     };
+//     runs.push(curr);
+//     result = 0
+//     for(let i = 0; i < runs.length - 1; i++) {
+//         result += Math.min(runs[i], runs[i+1]);
+//     };
+//     return result;
+// };
+
+// s = "1100";
+// console.log(countBinarySubstrings(s));
+
+
+///////////////////////// 706: DESIGN HASHMAP /////////////////////////
+// var MyHashMap = function() {
+//     this.map = {};
+// };
+
+// MyHashMap.prototype.put = function(key, value) {
+//     this.map[key] = value;
+// };
+
+// MyHashMap.prototype.get = function(key) {
+//     // if(this.map[key] !== undefined) {
+//     //     return this.map[key];
+//     // } else {
+//     //     return -1
+//     // };
+//     return (key in this.map) ? this.map[key] : -1;
+// };
+
+// MyHashMap.prototype.remove = function(key) {
+//     // if(key in this.map) {
+//     //     delete this.map[key];
+//     // };
+//     return (key in this.map) ? delete this.map[key] : undefined;
+// };
+
+// const obj = new MyHashMap();
+// obj.put(1, 1);
+// console.log(obj)
+// obj.put(2, 2);
+// console.log(obj)
+// console.log(obj.get(1))
+// console.log(obj.get(3))
+// obj.put(2, 1);
+// console.log(obj)
+// console.log(obj.get(2));
+// obj.remove(2);
+// console.log(obj.get(2));
+
+
+///////////////////////// 2283: CHECK IF NUMBER HAS EQUAL DIGIT COUNT AND DIGIT VALUE /////////////////////////
+var digitCount = function(s) {
+    let map1 = new Map;
+    let map2 = new Map;
+    for (let i = 0; i < s.length; i++) {
+        map1.set(i, s[+i]); 
+        (map2.get(s[i])) ? map2.set(s[+i], map2.get(s[i]) + 1) : map2.set(s[+i], 1);
     };
-    if(n === 0) {
-        return;
-    };
-    last = m - 1;
-    for(let i = 0; i < n; i++) {
-        if(nums2[i] >= nums1[last]) {
-            console.log(nums2[i] + ' >= ' + nums1[last]);
-            nums1[last + 1] = nums2[i]
-            last++;
-        } else {
-            while(nums2[i] < nums1[last] && last >= 0) {
-                console.log(nums2[i] + ' < ' + nums1[last]);
-                var temp = nums1[last];
-                nums1[last] = nums2[i];
-                nums1[last + 1] = temp;
-                console.log('nums1 = '+ nums1);
-                last--;
-            };
-            last = m + i;
+    for (let i = 0; i < map1.size; i++) {
+        let actual = 0;
+        if(map2.get(String(i)) !== undefined) {
+            actual = map2.get(String(i));
+        };
+        let required = map1.get(i);
+        if (actual != required) {
+            return false;
         };
     };
-    console.log('nums1 = ' + nums1);
-    return;
+    return true;
 };
 
-var merge2 = function(nums1, nums2, m, n) {
-    if(m === 0) {
-        nums1 = nums2;
-        return;
-    };
-    if(n === 0) {
-        return;
-    };
-    let nums2Place = n - 1;
-    let nums1Place = m - 1;
-    let i = m + n - 1;
-    while(nums2Place >= 0) {
-        if(nums1Place < 0 || nums2[nums2Place] > nums1[nums1Place]) {
-            console.log('nums2Place = ' + nums2Place);
-            console.log('nums1Place = ' + nums1Place); 
-            nums1[i] = nums2[nums2Place];
-            nums2Place--;
-        } else {
-            console.log('nums2Place = ' + nums2Place);
-            nums1[i] = nums1[nums1Place];
-            nums1Place--;
-        };
-        i--;
-    };
-    console.log('nums1 = ' + nums1);
-    return;
-}
-
-nums1 = [1,2,3,0,0,0];
-nums2 = [2,5,6];
-m = 3;
-n = 3;
-merge2(nums1, nums2, m, n);
-
+num = '1210'
+console.log(digitCount(num));
