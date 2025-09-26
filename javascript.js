@@ -489,3 +489,89 @@
 // let third = second.next;
 // third.next = new ListNode(3);
 // console.log(insertGreatestCommonDivisors(head));
+
+
+///////////////////////// 2980: CHECK IF BITWISE OR HAS TRAILING ZEROES /////////////////////////
+// var hasTrailingZeros = function(nums) {
+//     let evenCounter = 0;
+//     for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] % 2 == 0) {
+//             evenCounter += 1;
+//         };
+//         if (evenCounter == 2) {
+//             return true;
+//         };
+//     };
+//     return false;
+// };
+
+// const nums = [2,4,6,8];
+// console.log(hasTrailingZeros(nums))
+
+
+///////////////////////// 3178: FIND THE CHILD WHO HAS TEH BALL AFTER K SECONDS /////////////////////////
+// var numberOfChild = function(n, k) {
+//     let currentChild = 0;
+//     let goingForward = true;
+//     let i = 1;
+//     for (i; i <= k; i++) {
+//         if (currentChild == n - 1) {
+//             goingForward = false;
+//         };
+//         if (currentChild == 0) {
+//             goingForward = true;
+//         };
+//         if (goingForward == true) {
+//             currentChild += 1;
+//         } else {
+//             currentChild -= 1;
+//         };
+//     };
+//     return currentChild;
+// };
+
+// console.log(numberOfChild2(3,5))
+
+
+///////////////////////// 3591: CHECK IF ANY ELEMENT HAS PRIME FREQUENCY /////////////////////////
+// var isPrime = function(n) {
+//     console.log('checking if ' + n + ' is a prime number...');
+//     if (n <= 1) {
+//         return false;
+//     };
+//     for (let i = 2; i < n; i++) {
+//         if (n % i == 0) {
+//             return false;
+//         };
+//     };
+//     return true;
+// }
+
+// var checkPrimeFrequency = function(nums) {
+//     const newDict = new Map;
+//     let allOnes = true;
+//     for (let i = 0; i < nums.length; i++) {
+//         if (newDict.has(nums[i])) {
+//             console.log(nums[i] + ' is in newDict');
+//             newDict.set(nums[i], newDict.get(nums[i]) + 1);
+//             allOnes = false;
+//         } else {
+//             newDict.set(nums[i], 1);
+//         };
+//     };
+//     if (allOnes == true) {
+//         return false;
+//     };
+//     console.log(newDict);
+//     for (const key of newDict.keys()) {
+//         if(newDict.get(key) == 1 || isPrime(newDict.get(key)) == false) {
+//             continue;
+//         } else {
+//             return true;
+//         };
+//     };
+//     return false;
+// };
+
+// let nums = [3,0,3,6,3,3];
+// console.log(checkPrimeFrequency(nums));

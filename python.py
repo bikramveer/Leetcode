@@ -445,7 +445,7 @@
 #             return False
 #     return True
 
-# def checkPrimeFrequency(self, nums: list[int]) -> bool:
+# def checkPrimeFrequency(nums: list[int]) -> bool:
 #     newDict = {}
 #     allOnes = True
 #     for x in range(len(nums)):
