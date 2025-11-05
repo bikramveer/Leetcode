@@ -1,4 +1,4 @@
-///////////////////////// 1: TWO SUM /////////////////////////
+// MARK: 1 - TWO SUM
 // var twoSum = function(nums, target) {
 //     for(let i = 0; i < nums.length; i++) {
 //         for(let j = 0; j < nums.length; j++) {
@@ -28,7 +28,7 @@
 // console.log(twoSum2(nums, target))
 
 
-///////////////////////// 20: VALID PARENTHESIS /////////////////////////
+// MARK: 20 - VALID PARENTHESIS
 // var isValid = function(s) {
 //     const stack = [];
 //     let popped;
@@ -85,7 +85,7 @@
 // console.log(isValid(s));
 
 
-///////////////////////// 26: REMOVE DUPLICARTES FROM SORTED ARRAY /////////////////////////
+// MARK: 26 - REMOVE DUPLICARTES FROM SORTED ARRAY
 // var removeDuplicates = function(nums) {
 //     let curr = 1;
 //     let k = 1;
@@ -102,11 +102,11 @@
 //     return k;
 // };
 
-// let nums = [0,0,,1,1,1,2,3,3,4];
+// let nums = [0,0,1,1,1,2,3,3,4];
 // console.log(removeDuplicates(nums));
 
 
-///////////////////////// 27: REMOVE ELEMENT /////////////////////////
+// MARK: 27 - REMOVE ELEMENT
 // var removeElement = function(nums, val) {
 //     let swapped = 0;
 //     for(let i = 0; i < nums.length; i++) {
@@ -122,7 +122,7 @@
 // console.log(removeElement(nums, 2));
 
 
-///////////////////////// 28: FIND THE INDEX OF THE FIRST OCCURENCE IN A STRING /////////////////////////
+// MARK: 28 - FIND THE INDEX OF THE FIRST OCCURENCE IN A STRING
 // var strStr = function(haystack, needle) {
 //     let range = haystack.length - needle.length + 1
 //     if(needle.length > haystack.length) {
@@ -155,10 +155,10 @@
 
 // let haystack = 'dasbutsad'
 // let needle = 'sad'
-// console.log(strStr2(haystack, needle));
+// console.log(strStr(haystack, needle));
 
 
-///////////////////////// 35: SEARCH INSERTION POINT /////////////////////////
+// MARK: 35 - SEARCH INSERTION POINT
 // var searchInsert = function(nums, target) {
 // 2 pointer split solution
     // let start = 0;
@@ -198,7 +198,7 @@
 // console.log(searchInsert(nums, 7));
 
 
-///////////////////////// 58: LENGTH OF LAST WORD /////////////////////////
+// MARK: 58 - LENGTH OF LAST WORD
 // var lengthOfLastWord = function(s) {
 //     let count = 0;
 //     for(let i = s.length-1; i >= 0; i--) {
@@ -219,7 +219,7 @@
 // console.log(lengthOfLastWord(s));
 
 
-///////////////////////// 66: PLUS ONE /////////////////////////
+// MARK: 66 - PLUS ONE
 // var plusOne = function(digits) {
 //     let curr = digits.length - 1;
 //     while(curr >= 0) {
@@ -244,7 +244,7 @@
 // plusOne(digits);
 
 
-///////////////////////// 70: CLIMBING STAIRS /////////////////////////
+// MARK: 70 - CLIMBING STAIRS
 // var climbingStairs = function(n) {
 //     if(n == 1) {
 //         return 1
@@ -276,7 +276,7 @@
 // climbingStairs2(7)
 
 
-///////////////////////// 88: MERGED SORTED ARRAY /////////////////////////
+// MARK: 88 - MERGED SORTED ARRAY
 // var merge = function(nums1, nums2, m, n) {
 //     if(m === 0) {
 //         nums1 = nums2;
@@ -342,7 +342,7 @@
 // merge2(nums1, nums2, m, n);
 
 
-///////////////////////// 696: COUNT BINARY SUBSTRINGS /////////////////////////
+// MARK: 696 - COUNT BINARY SUBSTRINGS
 ///////////////////////// FDM INTERVIEW QUESTION /////////////////////////
 // var countBinarySubstrings = function(s) {
 //     const runs = []
@@ -363,11 +363,11 @@
 //     return result;
 // };
 
-// s = "1100";
+// s = "11001001001110001";
 // console.log(countBinarySubstrings(s));
 
 
-///////////////////////// 706: DESIGN HASHMAP /////////////////////////
+// MARK: 706 - DESIGN HASHMAP
 // var MyHashMap = function() {
 //     this.map = {};
 // };
@@ -406,7 +406,7 @@
 // console.log(obj.get(2));
 
 
-///////////////////////// 2283: CHECK IF NUMBER HAS EQUAL DIGIT COUNT AND DIGIT VALUE /////////////////////////
+// MARK: 2283 - CHECK IF NUMBER HAS EQUAL DIGIT COUNT AND DIGIT VALUE
 // var digitCount = function(s) {
 //     let map1 = new Map;
 //     let map2 = new Map;
@@ -431,7 +431,7 @@
 // console.log(digitCount(num));
 
 
-///////////////////////// 2807: INSERT GREATEST COMMON DIVISORS IN LINKED LIST /////////////////////////
+// MARK: 2807 - INSERT GREATEST COMMON DIVISORS IN LINKED LIST
 // class ListNode {
 //     constructor(val, next) {
 //         this.val = (val === undefined ? 0 : val);
@@ -491,7 +491,7 @@
 // console.log(insertGreatestCommonDivisors(head));
 
 
-///////////////////////// 2980: CHECK IF BITWISE OR HAS TRAILING ZEROES /////////////////////////
+// MARK: 2980 - CHECK IF BITWISE OR HAS TRAILING ZEROES
 // var hasTrailingZeros = function(nums) {
 //     let evenCounter = 0;
 //     for (let i = 0; i < nums.length; i++) {
@@ -509,7 +509,7 @@
 // console.log(hasTrailingZeros(nums))
 
 
-///////////////////////// 3178: FIND THE CHILD WHO HAS TEH BALL AFTER K SECONDS /////////////////////////
+// MARK: 3178 - FIND THE CHILD WHO HAS TEH BALL AFTER K SECONDS
 // var numberOfChild = function(n, k) {
 //     let currentChild = 0;
 //     let goingForward = true;
@@ -533,7 +533,7 @@
 // console.log(numberOfChild2(3,5))
 
 
-///////////////////////// 3591: CHECK IF ANY ELEMENT HAS PRIME FREQUENCY /////////////////////////
+// MARK: 3591 - CHECK IF ANY ELEMENT HAS PRIME FREQUENCY
 // var isPrime = function(n) {
 //     console.log('checking if ' + n + ' is a prime number...');
 //     if (n <= 1) {
@@ -713,6 +713,6 @@
 
 
 // MARK: 108 - CONVERT SORTED ARRAY TO BINARY TREE SEARCH
-var sortedArrayToBST = function(nums) {
+// var sortedArrayToBST = function(nums) {
     
-}
+// }
